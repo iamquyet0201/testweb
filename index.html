@@ -2,50 +2,14 @@
 <html lang="vi">
 <head>
   <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-  <script>
-    window.OneSignalDeferred = window.OneSignalDeferred || [];
-    OneSignalDeferred.push(async function(OneSignal) {
-      try {
-        await OneSignal.init({
-          appId: "c7336248-06b6-4b18-9c23-772f61f72280",
-          allowLocalhostAsSecureOrigin: true, // Chỉ để test localhost, xóa khi deploy HTTPS
-          notifyButton: {
-            enable: true // Hiển thị nút thông báo để người dùng bật thông báo
-          },
-          serviceWorkerParam: {
-            scope: '/' // Đảm bảo Service Worker được đăng ký ở root
-          },
-          serviceWorkerPath: 'OneSignalSDKWorker.js' // Chỉ định đường dẫn Service Worker
-        });
-        console.log("OneSignal initialized successfully");
-        
-        // Kiểm tra trạng thái đăng ký thông báo
-        OneSignal.isPushNotificationsEnabled().then(isEnabled => {
-          console.log("Push notifications enabled:", isEnabled);
-          if (!isEnabled) {
-            console.log("Prompting user to enable notifications...");
-            OneSignal.showNativePrompt(); // Hiển thị lời nhắc cấp quyền thông báo
-          }
-        }).catch(error => {
-          console.error("Error checking push notification status:", error);
-        });
-
-        // Kiểm tra Service Worker
-        navigator.serviceWorker.getRegistration('/').then(registration => {
-          if (registration) {
-            console.log("Service Worker registered:", registration.scope);
-          } else {
-            console.warn("No Service Worker registered for OneSignal.");
-          }
-        }).catch(error => {
-          console.error("Error checking Service Worker:", error);
-        });
-      } catch (error) {
-        console.error("OneSignal initialization failed:", error.message, error);
-        alert("Không thể khởi tạo thông báo đẩy. Vui lòng kiểm tra kết nối và cài đặt trình duyệt.");
-      }
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "02f21ada-5ae0-4aa1-aaba-66f197f03bea",
     });
-  </script>
+  });
+</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Sạt Lở | Hệ thống dự đoán thông minh</title>
